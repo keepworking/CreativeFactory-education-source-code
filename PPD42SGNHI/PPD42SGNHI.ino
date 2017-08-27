@@ -16,6 +16,11 @@ VIN(5v)               VCC
 #include <ESP8266WiFi.h>
 #include <SGNHI_ESP8266_WIFI.h>
 #include <ppd42.h>
+#ifdef ESP8266
+extern "c"{
+  #include"user_interface.h"
+}
+#endif
 
 PPD42 ppd(16,30000);
 //권장 샘플링 주기가 30초 입니다.
@@ -23,6 +28,7 @@ PPD42 ppd(16,30000);
 dotori dustsensor("센서코드");
 
 void setup(){
+  wifi_set_sleep(NONE_SLEEP_T);
   Serial.begin(9600);
   dev.init("ID","장치코드");
   pinMode(16,INPUT);
