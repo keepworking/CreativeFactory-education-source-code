@@ -18,7 +18,7 @@ void loop(){
     Serial.println("connect fail");
     return;
   }
-  client.print("GET /lssm/up.php?")
+  client.print("GET /lssm/up.php?");
   client.print("name=dust&");
   client.print(value,10);
   //변수가 소수일 경우 소숫점 아래 10자리까지 표기하도록 함.
